@@ -161,7 +161,7 @@ export function PagesCards() {
             numColumns={3}
             columnWrapperStyle={styles.flatListRow}
             scrollEnabled={false}
-            contentContainerStyle={{ gap: 12 }}
+            contentContainerStyle={{ gap: 10 }}
         />
     )
 }
@@ -169,14 +169,14 @@ export function PagesCards() {
 const styles = StyleSheet.create({
     flatListRow: {
         justifyContent: "space-around",
-        gap: 12,
+        gap: 10,
     },
     card: {
         flex: 1,
-        height: 120,
+        height: 110,
         backgroundColor: "#FFF",
         borderRadius: 8,
-        padding: 12,
+        padding: 8,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         marginTop: 8,
-        fontSize: 14,
+        fontSize: 13,
         fontWeight: "600",
         textAlign: "center",
         color: "#767676",

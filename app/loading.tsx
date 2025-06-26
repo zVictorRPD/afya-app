@@ -1,9 +1,54 @@
-import { Text } from "react-native";
+import { useNavigation } from "expo-router";
+import { ActivityIndicator, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 
 export default function Loading() {
+    const navigation = useNavigation();
     return (
-        <Text>
-            Carregando...
-        </Text>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            showsVerticalScrollIndicator
+        >
+            <View
+                style={styles.loadingContainer}
+            >
+                <ActivityIndicator size="large" color="#cf0058" />
+                <Text style={styles.loadingText}>
+                    Carregando...
+                </Text>
+                <Pressable style={styles.returnButton} onPress={() => {
+                    navigation.goBack();
+                }}>
+                    <Text style={styles.textButton}>Tentar novamente mais tarde</Text>
+                </Pressable>
+            </View>
+        </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    loadingContainer: {
+        flex: 1,
+        backgroundColor: "#fafafa",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: StatusBar?.currentHeight ? StatusBar?.currentHeight + 60 : 100
+    },
+    loadingText: {
+        color: "#cf0058",
+        fontWeight: "600",
+        fontSize: 18,
+    },
+    returnButton: {
+        marginTop: 20,
+        padding: 10,
+        backgroundColor: "#cf0058",
+        borderRadius: 8,
+    },
+    textButton: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "600",
+    }
+});

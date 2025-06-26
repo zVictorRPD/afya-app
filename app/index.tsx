@@ -1,6 +1,6 @@
 import { PagesCards } from "@/components/PageCard";
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
     return (
@@ -8,6 +8,20 @@ export default function Index() {
             contentContainerStyle={{ flexGrow: 1 }}
             showsVerticalScrollIndicator
         >
+            <View
+                style={styles.pageHeaderContainer}
+            >
+                <FontAwesome6
+                    name="t"
+                    size={24}
+                    iconStyle='solid'
+                    color="#d5d5d5"
+                    style={styles.headerIcon}
+                />
+                <Text style={styles.headerText}>
+                    Olá, PAULA BAILUNE ANTUNES.
+                </Text>
+            </View>
             <View style={styles.container}>
                 <View
                     style={styles.grayHeader}
@@ -40,21 +54,40 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
+    pageHeaderContainer: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        gap: 8,
+        backgroundColor: "#fafafa",
+        paddingTop: 10,
+        paddingBottom: 2,
+        marginTop: StatusBar?.currentHeight ? StatusBar?.currentHeight + 60 : 100
+    },
     container: {
         flex: 1,
-        padding: 10,
+        padding: 8,
         backgroundColor: "#fafafa",
+    },
+    headerIcon: {
+        transform: [{ rotate: "90deg" }],
+    },
+    headerText: {
+        fontSize: 16,
+        fontWeight: "600",
+        color: "#cf0058",
     },
     grayHeader: {
         backgroundColor: "#e0e0e0",
-        padding: 12,
+        padding: 10,
         borderRadius: 12,
-        marginBottom: 12,
+        marginBottom: 10,
         position: "relative",
     },
     grayHeaderText: {
         color: "#5d5d5d",
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 12,
         fontWeight: 600,
     },
@@ -65,7 +98,8 @@ const styles = StyleSheet.create({
     },
     subCardText: {
         color: "#cf0058",
-        fontSize: 16,
+        fontSize: 14,
+        fontWeight: "500",
     },
     rightIcon: {
         position: "absolute",

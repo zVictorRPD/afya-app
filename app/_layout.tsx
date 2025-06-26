@@ -1,8 +1,14 @@
+import { Header } from "@/components/Header";
 import { Stack } from "expo-router";
 
 export default function RootLayout() {
     return (
-        <Stack>
+        <Stack
+            screenOptions={{
+                header: Header,
+                statusBarStyle: "light",
+            }}
+        >
             <Stack.Screen
                 name="index"
                 options={{ title: "Home" }}
@@ -13,7 +19,7 @@ export default function RootLayout() {
             />
             <Stack.Screen
                 name="loading"
-                options={{ title: "Carregando" }}
+                options={{ title: "Carregando..." }}
             />
         </Stack>
     );
