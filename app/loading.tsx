@@ -1,27 +1,30 @@
 import { useNavigation } from "expo-router";
 import { ActivityIndicator, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Loading() {
     const navigation = useNavigation();
     return (
-        <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
-            showsVerticalScrollIndicator
-        >
-            <View
-                style={styles.loadingContainer}
+        <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView
+                contentContainerStyle={{ flexGrow: 1 }}
+                showsVerticalScrollIndicator
             >
-                <ActivityIndicator size="large" color="#cf0058" />
-                <Text style={styles.loadingText}>
-                    Carregando...
-                </Text>
-                <Pressable style={styles.returnButton} onPress={() => {
-                    navigation.goBack();
-                }}>
-                    <Text style={styles.textButton}>Tentar novamente mais tarde</Text>
-                </Pressable>
-            </View>
-        </ScrollView>
+                <View
+                    style={styles.loadingContainer}
+                >
+                    <ActivityIndicator size="large" color="#cf0058" />
+                    <Text style={styles.loadingText}>
+                        Carregando...
+                    </Text>
+                    <Pressable style={styles.returnButton} onPress={() => {
+                        navigation.goBack();
+                    }}>
+                        <Text style={styles.textButton}>Tentar novamente mais tarde</Text>
+                    </Pressable>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
@@ -33,7 +36,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: StatusBar?.currentHeight ? StatusBar?.currentHeight + 60 : 100
+        marginTop: 60,
     },
     loadingText: {
         color: "#cf0058",

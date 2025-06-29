@@ -1,55 +1,57 @@
 import { PagesCards } from "@/components/PageCard";
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Index() {
     return (
-        <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
-            showsVerticalScrollIndicator
-        >
-            <View
-                style={styles.pageHeaderContainer}
+        <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView
+                contentContainerStyle={{ flexGrow: 1 }}
+                showsVerticalScrollIndicator
             >
-                <FontAwesome6
-                    name="t"
-                    size={24}
-                    iconStyle='solid'
-                    color="#d5d5d5"
-                    style={styles.headerIcon}
-                />
-                <Text style={styles.headerText}>
-                    Olá, PAULA BAILUNE ANTUNES.
-                </Text>
-            </View>
-            <View style={styles.container}>
                 <View
-                    style={styles.grayHeader}
+                    style={styles.pageHeaderContainer}
                 >
-                    <Text
-                        style={styles.grayHeaderText}
-                    >
-                        Contexto Educacional
+                    <FontAwesome6
+                        name="t"
+                        size={24}
+                        iconStyle='solid'
+                        color="#d5d5d5"
+                        style={styles.headerIcon}
+                    />
+                    <Text style={styles.headerText}>
+                        Olá, PAULA BAILUNE ANTUNES.
                     </Text>
+                </View>
+                <View style={styles.container}>
                     <View
-                        style={styles.subCard}
+                        style={styles.grayHeader}
                     >
                         <Text
-                            style={styles.subCardText}
+                            style={styles.grayHeaderText}
                         >
-                            2025/2 | MEDICINA | Integral
+                            Contexto Educacional
                         </Text>
-                        <Text
-                            style={styles.subCardText}
+                        <View
+                            style={styles.subCard}
                         >
-                            Situação: MATRICULADO
-                        </Text>
-                        <FontAwesome6 name="right-left" size={24} iconStyle='solid' color="#cf0058" style={styles.rightIcon} />
+                            <Text
+                                style={styles.subCardText}
+                            >
+                                2025/2 | MEDICINA | Integral
+                            </Text>
+                            <Text
+                                style={styles.subCardText}
+                            >
+                                Situação: MATRICULADO
+                            </Text>
+                            <FontAwesome6 name="right-left" size={24} iconStyle='solid' color="#cf0058" style={styles.rightIcon} />
+                        </View>
                     </View>
+                    <PagesCards />
                 </View>
-                <PagesCards />
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fafafa",
         paddingTop: 10,
         paddingBottom: 2,
-        marginTop: StatusBar?.currentHeight ? StatusBar?.currentHeight + 60 : 100
+        marginTop: 60,
     },
     container: {
         flex: 1,

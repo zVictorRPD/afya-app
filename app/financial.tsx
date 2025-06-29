@@ -1,6 +1,7 @@
 import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
 import React from 'react';
 import { FlatList, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Financial() {
     const mockupData = [
@@ -48,107 +49,109 @@ export default function Financial() {
         }
     ]
     return (
-        <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
-            showsVerticalScrollIndicator
-        >
-            <View style={styles.container}>
-                <View style={styles.secondContainer}>
-                    <View style={styles.secondHeader}>
-                        <FontAwesome6
-                            name="t"
-                            size={24}
-                            iconStyle='solid'
-                            color="#d5d5d5"
-                            style={styles.secondHeaderIcon}
-                        />
-                        <Text style={styles.secondHeaderText}>
-                            Outros Serviços
-                        </Text>
-                    </View>
-                    <FlatList
-                        data={mockupData}
-                        keyExtractor={(item) => item.title + item.date}
-                        renderItem={({ item }) => (
-                            <View style={styles.rowContainer}>
-                                <View
-                                    style={{
-                                        ...styles.grayHeader,
-                                        flex: 1,
-                                    }}
-                                >
-                                    <Text
-                                        style={styles.grayHeaderText}
+        <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView
+                contentContainerStyle={{ flexGrow: 1 }}
+                showsVerticalScrollIndicator
+            >
+                <View style={styles.container}>
+                    <View style={styles.secondContainer}>
+                        <View style={styles.secondHeader}>
+                            <FontAwesome6
+                                name="t"
+                                size={24}
+                                iconStyle='solid'
+                                color="#d5d5d5"
+                                style={styles.secondHeaderIcon}
+                            />
+                            <Text style={styles.secondHeaderText}>
+                                Outros Serviços
+                            </Text>
+                        </View>
+                        <FlatList
+                            data={mockupData}
+                            keyExtractor={(item) => item.title + item.date}
+                            renderItem={({ item }) => (
+                                <View style={styles.rowContainer}>
+                                    <View
+                                        style={{
+                                            ...styles.grayHeader,
+                                            flex: 1,
+                                        }}
                                     >
-                                        {item.title}
-                                    </Text>
-                                    <View style={styles.subCardContainer}>
-                                        <View
-                                            style={styles.subCard}
+                                        <Text
+                                            style={styles.grayHeaderText}
                                         >
-                                            <Text
-                                                style={{ ...styles.subCardText, color: "#191919" }}
+                                            {item.title}
+                                        </Text>
+                                        <View style={styles.subCardContainer}>
+                                            <View
+                                                style={styles.subCard}
                                             >
-                                                Venc.
-                                            </Text>
-                                            <View style={styles.subCardDivider} />
-                                            <Text
-                                                style={styles.subCardText}
+                                                <Text
+                                                    style={{ ...styles.subCardText, color: "#191919" }}
+                                                >
+                                                    Venc.
+                                                </Text>
+                                                <View style={styles.subCardDivider} />
+                                                <Text
+                                                    style={styles.subCardText}
+                                                >
+                                                    {item.date}
+                                                </Text>
+                                            </View>
+                                            <View
+                                                style={styles.subCard}
                                             >
-                                                {item.date}
-                                            </Text>
-                                        </View>
-                                        <View
-                                            style={styles.subCard}
-                                        >
-                                            <Text
-                                                style={{ ...styles.subCardText, color: "#191919" }}
+                                                <Text
+                                                    style={{ ...styles.subCardText, color: "#191919" }}
+                                                >
+                                                    Valor
+                                                </Text>
+                                                <View style={styles.subCardDivider} />
+                                                <Text
+                                                    style={styles.subCardText}
+                                                >
+                                                    {item.value}
+                                                </Text>
+                                            </View>
+                                            <View
+                                                style={styles.subCard}
                                             >
-                                                Valor
-                                            </Text>
-                                            <View style={styles.subCardDivider} />
-                                            <Text
-                                                style={styles.subCardText}
-                                            >
-                                                {item.value}
-                                            </Text>
-                                        </View>
-                                        <View
-                                            style={styles.subCard}
-                                        >
-                                            <Text
-                                                style={{ ...styles.subCardText, color: "#191919" }}
-                                            >
-                                                Status
-                                            </Text>
-                                            <View style={styles.subCardDivider} />
-                                            <Text
-                                                style={{ ...styles.subCardText, color: item.status === "PENDENTE" ? "#fb2c36" : "#498e4d" }}
-                                            >
-                                                {item.status}
-                                            </Text>
+                                                <Text
+                                                    style={{ ...styles.subCardText, color: "#191919" }}
+                                                >
+                                                    Status
+                                                </Text>
+                                                <View style={styles.subCardDivider} />
+                                                <Text
+                                                    style={{ ...styles.subCardText, color: item.status === "PENDENTE" ? "#fb2c36" : "#498e4d" }}
+                                                >
+                                                    {item.status}
+                                                </Text>
+                                            </View>
                                         </View>
                                     </View>
+                                    <View style={{
+                                        ...styles.grayHeader,
+                                        ...styles.grayHeaderIcon
+                                    }}>
+                                        {item.status === "PENDENTE" ? (
+                                            <FontAwesome6 name='triangle-exclamation' size={32} iconStyle='solid' color="#fb2c36" />
+                                        ) : (
+                                            <FontAwesome6 name='circle-check' size={32} iconStyle='solid' color="#498e4d" />
+                                        )}
+                                    </View>
                                 </View>
-                                <View style={{
-                                    ...styles.grayHeader,
-                                    ...styles.grayHeaderIcon
-                                }}>
-                                    {item.status === "PENDENTE" ? (
-                                        <FontAwesome6 name='triangle-exclamation' size={32} iconStyle='solid' color="#fb2c36" />
-                                    ) : (
-                                        <FontAwesome6 name='circle-check' size={32} iconStyle='solid' color="#498e4d" />
-                                    )}
-                                </View>
-                            </View>
-                        )}
-                        scrollEnabled={false}
-                        contentContainerStyle={{ gap: 8 }}
+                            )}
+                            scrollEnabled={false}
+                            contentContainerStyle={{ gap: 8 }}
 
-                    />
+                        />
+                    </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </SafeAreaView>
     )
 
 }
@@ -158,7 +161,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 8,
         backgroundColor: "#fafafa",
-        marginTop: StatusBar?.currentHeight ? StatusBar?.currentHeight + 60 : 100
+        marginTop: 60,
     },
     secondContainer: {
         paddingHorizontal: 8,
