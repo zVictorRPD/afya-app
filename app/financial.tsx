@@ -45,7 +45,7 @@ export default function Financial() {
             title: "MATRÍCULA",
             date: "10/07/25",
             value: "12.500,57",
-            status: "PENDENTE",
+            status: "EM ABERTO",
         }
     ]
     return (
@@ -125,7 +125,7 @@ export default function Financial() {
                                                 </Text>
                                                 <View style={styles.subCardDivider} />
                                                 <Text
-                                                    style={{ ...styles.subCardText, color: item.status === "PENDENTE" ? "#fb2c36" : "#498e4d" }}
+                                                    style={{ ...styles.subCardText, color: item.status !== "PENDENTE" ? item.status !== "BAIXADO" ? "#ff9a05" : "#498e4d" : "#fb2c36" }}
                                                 >
                                                     {item.status}
                                                 </Text>
@@ -136,10 +136,14 @@ export default function Financial() {
                                         ...styles.grayHeader,
                                         ...styles.grayHeaderIcon
                                     }}>
-                                        {item.status === "PENDENTE" ? (
+                                        {item.status === "PENDENTE" && (
                                             <FontAwesome6 name='triangle-exclamation' size={32} iconStyle='solid' color="#fb2c36" />
-                                        ) : (
+                                        )}
+                                        {item.status === "BAIXADO" && (
                                             <FontAwesome6 name='circle-check' size={32} iconStyle='solid' color="#498e4d" />
+                                        )}
+                                        {item.status === "EM ABERTO" && (
+                                            <FontAwesome6 name='triangle-exclamation' size={32} iconStyle='solid' color="#ff9a05" />
                                         )}
                                     </View>
                                 </View>
