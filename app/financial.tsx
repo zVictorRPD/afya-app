@@ -7,38 +7,44 @@ export default function Financial() {
         {
             title: "MATRÍCULA",
             date: "10/01/25",
-            value: "12.500,00",
+            value: "12.250,46",
             status: "BAIXADO",
         },
         {
             title: "MENSALIDADE",
             date: "10/02/25",
-            value: "12.500,00",
-            status: "ATRASADO",
+            value: "12.250,46",
+            status: "BAIXADO",
         },
         {
             title: "MENSALIDADE",
             date: "10/03/25",
-            value: "12.500,00",
-            status: "ATRASADO",
+            value: "12.985,48",
+            status: "PENDENTE",
         },
         {
             title: "MENSALIDADE",
             date: "10/04/25",
-            value: "12.500,00",
-            status: "ATRASADO",
+            value: "12.862,98",
+            status: "PENDENTE",
         },
         {
             title: "MENSALIDADE",
             date: "10/05/25",
-            value: "12.500,00",
-            status: "ATRASADO",
+            value: "12.740,47",
+            status: "PENDENTE",
         },
         {
             title: "MENSALIDADE",
             date: "10/06/25",
-            value: "12.500,00",
-            status: "ATRASADO",
+            value: "12.617,97",
+            status: "PENDENTE",
+        },
+        {
+            title: "MATRÍCULA",
+            date: "10/07/25",
+            value: "12.500,57",
+            status: "PENDENTE",
         }
     ]
     return (
@@ -117,7 +123,7 @@ export default function Financial() {
                                             </Text>
                                             <View style={styles.subCardDivider} />
                                             <Text
-                                                style={{ ...styles.subCardText, color: item.status === "ATRASADO" ? "#fb2c36" : "#498e4d" }}
+                                                style={{ ...styles.subCardText, color: item.status === "PENDENTE" ? "#fb2c36" : "#498e4d" }}
                                             >
                                                 {item.status}
                                             </Text>
@@ -128,7 +134,7 @@ export default function Financial() {
                                     ...styles.grayHeader,
                                     ...styles.grayHeaderIcon
                                 }}>
-                                    {item.status === "ATRASADO" ? (
+                                    {item.status === "PENDENTE" ? (
                                         <FontAwesome6 name='triangle-exclamation' size={32} iconStyle='solid' color="#fb2c36" />
                                     ) : (
                                         <FontAwesome6 name='circle-check' size={32} iconStyle='solid' color="#498e4d" />
