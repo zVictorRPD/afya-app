@@ -21,31 +21,31 @@ export default function Financial() {
             title: "MENSALIDADE",
             date: "10/03/25",
             value: "12.985,48",
-            status: "PENDENTE",
+            status: "BAIXADO",
         },
         {
             title: "MENSALIDADE",
             date: "10/04/25",
             value: "12.862,98",
-            status: "PENDENTE",
+            status: "BAIXADO",
         },
         {
             title: "MENSALIDADE",
             date: "10/05/25",
             value: "12.740,47",
-            status: "PENDENTE",
+            status: "BAIXADO",
         },
         {
             title: "MENSALIDADE",
             date: "10/06/25",
             value: "12.617,97",
-            status: "PENDENTE",
+            status: "BAIXADO",
         },
         {
             title: "MATRÍCULA",
             date: "10/07/25",
-            value: "12.500,57",
-            status: "EM ABERTO",
+            value: "12.875,58",
+            status: "PENDENTE",
         }
     ]
     return (
